@@ -1,0 +1,49 @@
+﻿@model List<RealEstate.Models.Property>
+@{
+    ViewBag.Title = "DeleteProperty";
+    ViewBag.IsAdmin = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;min-height:350px ;">
+    <div class="container">
+        <div class="row">
+            <h3> Approve these Properties </h3>
+            <div class="well">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Id</th>
+                        <th>UserId</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+
+                    @{
+                        foreach (var pro in Model)
+                        {
+                                <tr>
+                                    <td>@pro.Id</td>
+                                    <td>@pro.UserId</td>
+                                    <td>@pro.Country</td>
+                                    <td>@pro.State</td>
+                                    <td>@pro.City</td>
+                                    <td>@pro.Address</td>
+                                    <td>@pro.Email</td>
+                                    <td>@pro.Contact</td>
+                                    <td>@pro.Price</td>
+                                    <td><a href="@Url.Action("DeleteP", "Admin", new { uid =  pro.Id })" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete</span></a></td>
+                                </tr>
+                        }
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

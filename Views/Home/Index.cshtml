@@ -1,0 +1,142 @@
+﻿@model List<RealEstate.Models.Property>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.ShowSL = "T";
+}
+
+<div id="carouselBlk">
+    <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/a.jpg" alt="special offers" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/b.jpg" alt="" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/c.jpg" alt="" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/d.jpg" alt="" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/e.jpg" alt="" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <a href="register.html"><img style="height:480px;width:1170px;" src="~/Content/themes/images/carousel/f.jpg" alt="" /></a>
+                    <div class="carousel-caption">
+                        <h4>label</h4>
+                        <p>details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>
+
+
+
+
+@{
+    if(Session["uid"] != null )
+    { 
+        <div id="mainBody">
+            <div class="container">
+                <div class="row">
+           
+                    <div class="span9">
+                    
+                        <h4>Latest Property </h4>
+                        <ul class="thumbnails">
+
+                            @{
+                                Model.Reverse();
+                                int i = 0;
+                                foreach (var pro in Model)
+                                {
+                                    if (pro.IsApproved.Trim().Equals("true"))
+                                    {
+
+                                            <li class="span3">
+                                                <div class="thumbnail">
+                                                    <a href="@Url.Action("ShowPropertyDetails", "Home", new {id = pro.Id })"><img style="height:200px" src="@Url.Content("~/Files/"+pro.Pic)" alt="image" /></a>
+                                                    <div class="caption">
+                                                        <h5>@pro.Type</h5>
+                                                        <p>
+                                                            @pro.Size
+                                                        </p>
+
+                                                        <h4 style="text-align:center"><a class="btn" href="@Url.Action("ShowPropertyDetails", "Home", new {id = pro.Id })"> <i class="icon-zoom-in"></i></a> <a class="btn btn-primary">@pro.Price</a></h4>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        i++;
+                                    }
+                                        if (i >= 6)
+                                        { break; }
+                                    }
+                                }
+
+                                </ul>
+                    </div>
+        
+
+        
+                    <div id="sidebar" class="span3">
+                        <div class="well well-small" style="min-height:550px;">
+                            <center style="padding-top:10px;"><a href="~/Home/SellProperty" role="button" data-toggle="modal" ><span class="btn btn-large btn-success">Sell Your Property!</span></a></center>
+                            <div style="color:red">
+                                @ViewBag.Notification
+                            </div>
+                            <center style="padding-top:10px;"><a href="~/Home/DeletePost" role="button" data-toggle="modal"><span class="btn btn-large btn-success">View/Delete Your Posts!</span></a></center>
+                        
+                        </div>
+
+                
+                    </div>
+
+
+
+
+            </div>
+        </div>
+        </div>
+    }
+}
+

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    ViewBag.IsAdmin = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;min-height: 350px;">
+    <div class="container">
+        <div class="row">
+            <h3> Welcome To Admin Site</h3>
+            <div class="well">
+            @{
+                if (Session["aid"] != null) { 
+                    
+
+                     <div class="control-group"><a href="~/Admin/ApproveProperty" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Approve Properties</span></a></div>
+                    <div class="control-group"><a href="~/Admin/DeleteUser" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete User</span></a></div>
+                    <div class="control-group"><a href="~/Admin/DeleteProperty" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete Property</span></a></div>
+                    <div class="control-group"><a href="~/Admin/ViewReports" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">View Reports</span></a></div>
+                }
+
+}
+                </div>
+            
+        </div>
+    </div>
+</div>
+

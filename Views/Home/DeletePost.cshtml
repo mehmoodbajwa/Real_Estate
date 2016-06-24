@@ -1,0 +1,50 @@
+﻿@model List<RealEstate.Models.Property>
+@{
+    ViewBag.Title = "DeletePost";
+    ViewBag.ShowSL = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;min-height:350px ;">
+    <div class="container">
+        <div class="row">
+            <h3> Delete Posts </h3>
+            <div class="well">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+
+                    @{
+                        foreach (var pro in Model)
+                        {
+                      
+
+                                <tr>
+                                    <td><center>@pro.Country</center></td>
+                                    <td><center>@pro.State</center></td>
+                                    <td><center>@pro.City</center></td>
+                                    <td><center>@pro.Address</center></td>
+                                    <td><center>@pro.Email</center></td>
+                                    <td><center>@pro.Contact</center></td>
+                                    <td><center>@pro.Price</center></td>
+                                    <td><center><a href="@Url.Action("Del", "Home", new {uid = pro.Id })" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete</span></a></center></td>
+                                </tr>
+                            
+                        }
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

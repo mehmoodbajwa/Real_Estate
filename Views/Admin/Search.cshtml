@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Search";
+    ViewBag.IsAdmin = "T";
+}
+
+@{
+    <div id="mainBody">
+        <div class="container">
+            <div class="row">
+
+                <div class="span12">
+
+                    <h4>Search Reault </h4>
+                    <div class="well">
+                        <ul class="thumbnails">
+
+                            @{
+                                Model.Reverse();
+
+                                foreach (var pro in Model)
+                                {
+                                  
+
+                                        <li class="span3">
+                                            <div class="thumbnail">
+                                                <a href="@Url.Action("ShowPropertyDetails", "Admin", new {id = pro.Id })"><img style="height:200px" src="@Url.Content("~/Files/"+pro.Pic)" alt="image" /></a>
+                                                <div class="caption">
+                                                    <h5>@pro.Type</h5>
+                                                    <p>
+                                                        @pro.Size
+                                                    </p>
+
+                                                    <h4 style="text-align:center"><a class="btn" href="@Url.Action("ShowPropertyDetails", "Admin", new {id = pro.Id })"> <i class="icon-zoom-in"></i></a> <a class="btn btn-primary">@pro.Price</a></h4>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    
+
+                                }
+                            }
+
+                        </ul>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

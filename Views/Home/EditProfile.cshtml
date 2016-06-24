@@ -1,0 +1,147 @@
+﻿@model RealEstate.Models.User
+@{
+    ViewBag.Title = "EditProfile";
+    ViewBag.ShowSL = "T";
+}
+
+
+<div id="mainBody" style="margin-left:30px;">
+    <div class="container">
+        <div class="row">
+            <h3> Edit Profile</h3>
+            <div class="well">
+                @using (Html.BeginForm("EditProfile", "Home", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+
+                    <fieldset>
+                        <legend>Edit</legend>
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.Label("Picture")
+                            </div>
+                            <div class="controls">
+                                <img style="height:200px" src="@Url.Content("~/Files/"+Model.Pic)" alt="image" />
+                            </div>
+                        </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Name" })
+                                        @Html.ValidationMessageFor(model => model.Name)
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", @onblur = "checkUsernameAvailibility();" })
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                        <div id="usernameAvailibility"></div>
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Pass, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Pass, new { type = "password", @class = "form-control", @placeholder = "Password" })
+                                        @Html.ValidationMessageFor(model => model.Pass)
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Pic, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Pic, new { type = "file", @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Pic)
+
+                                        @ViewData["Error"]
+
+
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Question, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Question, new { @class = "form-control", @placeholder = "Secret Question" })
+                                        @Html.ValidationMessageFor(model => model.Question)
+
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Answer, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Answer, new { @class = "form-control", @placeholder = "Answer For Secret Question" })
+                                        @Html.ValidationMessageFor(model => model.Answer)
+
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button id="submit" type="submit" class="btn btn-success">Submit</button>
+                                        <a href="~/Home/Index" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Cancel</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <a href="~/Home/DeleteU" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete Profile</span></a>
+                                    </div>
+                                </div>
+                    </fieldset>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+        function checkUsernameAvailibility()
+        {
+            var Email = document.getElementById("Email").value;
+            if (Email.length == 0)
+            {
+                $('#usernameAvailibility').text("Please Enter Email");
+                return;
+            }
+
+            $.getJSON("/home/CheckUsernameAvailibility?Username=" + Email, function (data) {
+                if (data) {
+                    $('#usernameAvailibility').text("Username is not available or you dont have changed it.");
+                    
+                }
+                else {
+                    $('#usernameAvailibility').text("Username is available. ");
+                    
+                }
+            });
+        }
+
+</script>
+
+<!-- MainBody End ============================= -->

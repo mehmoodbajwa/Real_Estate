@@ -1,0 +1,48 @@
+﻿@model List<RealEstate.Models.Report>
+@{
+    ViewBag.Title = "ViewReports";
+    ViewBag.IsAdmin = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;min-height:350px ;">
+    <div class="container">
+        <div class="row">
+            <h3> Approve these Properties </h3>
+            <div class="well">
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Id</th>
+                        <th>User Id</th>
+                        <th>Property's User Id</th>
+                        <th>Property Id</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                        
+                    </tr>
+
+                    @{
+                        foreach (var pro in Model)
+                        {
+
+                            <tr>
+                                <td>@pro.Id</td>
+                                <td>@pro.UserId</td>
+                                <td>@pro.ProUserId</td>
+                                <td>@pro.ProId</td>
+                                <td>@pro.Message</td>
+                                <td><a href="@Url.Action("DeleteU", "Admin", new { uid = pro.UserId })" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete User</span></a></td>
+                                <td><a href="@Url.Action("DeleteP", "Admin", new { uid = pro.ProId })" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete Property</span></a></td>
+                                <td><a href="@Url.Action("DeleteR", "Admin", new { uid = pro.Id })" role="button" data-toggle="modal" style="padding-top:10px;"><span class="btn btn-large btn-success">Delete Report</span></a></td>
+                            </tr>
+                        }
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

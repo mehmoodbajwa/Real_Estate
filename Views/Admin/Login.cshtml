@@ -1,0 +1,57 @@
+﻿@model RealEstate.Models.Admin
+@{
+    ViewBag.Title = "Login";
+    ViewBag.IsAdmin = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;min-height:350px ;">
+    <div class="container">
+        <div class="row">
+            <h3> LOGIN </h3>
+                    <div class="well">
+                        @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                        {
+
+                            <fieldset>
+                                <legend>Login</legend>
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                                        @Html.ValidationMessageFor(model => model.Email)
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="control-label">
+                                        @Html.LabelFor(model => model.Pass, new { @class = "control-label col-sm-2" })
+                                    </div>
+                                    <div class="controls">
+
+                                        @Html.TextBoxFor(model => model.Pass, new { type = "password", @class = "form-control", @placeholder = "Password" })
+                                        @Html.ValidationMessageFor(model => model.Pass)
+
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <p style="color:red;">@ViewBag.Error</p>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        }
+                    </div>
+        </div>
+    </div>
+</div>

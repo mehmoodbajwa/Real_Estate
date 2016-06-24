@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "CheckAnswer";
+    ViewBag.ShowSL = "T";
+}
+
+@model RealEstate.Models.User
+@{
+    <div class="container" style="min-height: 350px;">
+        <div class="form-horizontal">
+            <div class="well">
+            @{ if (Model == null) { }
+                else
+                {
+                   <div class="control-group">
+                       <div class="control-label">
+                           @Html.Label("Your Password is : ")
+                       </div>
+                       <div class="controls">
+                            @Html.TextBoxFor(model => model.Pass, new { @readonly = "readonly" })
+                        </div>
+                    </div>
+                }
+            }
+            </div>
+        </div>
+    </div>
+}

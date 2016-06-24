@@ -1,0 +1,163 @@
+﻿@model RealEstate.Models.Property
+@{
+    ViewBag.Title = "SellProperty";
+    ViewBag.ShowSL = "T";
+}
+
+<div id="mainBody" style="margin-left:30px;">
+    <div class="container">
+        <div class="row">
+            <h3> Sell Property</h3>
+            <div class="well">
+                @using (Html.BeginForm("SellProperty", "Home", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                {
+
+                    <fieldset>
+                        <legend>Enter Info</legend>
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Country, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control", @placeholder = "Country" })
+                                @Html.ValidationMessageFor(model => model.Country)
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.State, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.State, new { @class = "form-control", @placeholder = "State"})
+                                @Html.ValidationMessageFor(model => model.State)
+                                <div id="usernameAvailibility"></div>
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.City, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.City, new { @class = "form-control", @placeholder = "City" })
+                                @Html.ValidationMessageFor(model => model.City)
+
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Address, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
+                                @Html.ValidationMessageFor(model => model.Address)
+
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Pic, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Pic, new { type = "file", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Pic)
+
+                                @ViewData["Error"]
+
+
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Email, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+                                @Html.ValidationMessageFor(model => model.Email)
+
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Contact, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Contact, new { @class = "form-control", @placeholder = "Contact" })
+                                @Html.ValidationMessageFor(model => model.Contact)
+
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Price, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @placeholder = "Price" })
+                                @Html.ValidationMessageFor(model => model.Price)
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Type, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Type, new { @class = "form-control", @placeholder = "Type" })
+                                @Html.ValidationMessageFor(model => model.Type)
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="control-group">
+                            <div class="control-label">
+                                @Html.LabelFor(model => model.Size, new { @class = "control-label col-sm-2" })
+                            </div>
+                            <div class="controls">
+
+                                @Html.TextBoxFor(model => model.Size, new { @class = "form-control", @placeholder = "Size" })
+                                @Html.ValidationMessageFor(model => model.Size)
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <button id="submit" type="submit" class="btn btn-success">Submit</button>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
